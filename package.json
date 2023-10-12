@@ -2,6 +2,7 @@
   "name": "assignment2_beckend",
   "version": "1.0.0",
   "main": "index.js",
+  "type":"module",
   "author": "Becky Rutherford",
   "license": "MIT",
   "dependencies": {

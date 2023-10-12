@@ -1,7 +1,9 @@
+//Entrypoint and primary config for server
 import config from './config/config.js' 
 import app from './server/express.js'
 import mongoose from 'mongoose' 
 mongoose.Promise = global.Promise
+//Connect to database
 mongoose.connect(config.mongoUri, { useNewUrlParser: true,
 //useCreateIndex: true, 
 useUnifiedTopology: true } )

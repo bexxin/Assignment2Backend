@@ -1,7 +1,6 @@
 import Product from "../models/product.model.js";
-//import extend from 'lodash/extend.js';
 import errorHandler from './error.controller.js';
-//import { updateWith } from "lodash";
+
 
 const getAllProducts = async(req,res)=>{
     console.log("allproductscalled");
@@ -14,7 +13,7 @@ const getAllProducts = async(req,res)=>{
     }
 }
 const getProductById = async(req,res,next,id)=>{
-
+    console.log("getProductById is called");
     try{
         let product = await Product.findById(id);
         if(!product){

@@ -2,7 +2,7 @@
 import config from './config/config.js' 
 import app from './server/express.js'
 import mongoose from 'mongoose' 
-import router from './server/routes/product.routes.js'
+
 
 mongoose.Promise = global.Promise
 
@@ -18,8 +18,7 @@ console.log("Connected to the Marketplace database!");
 mongoose.connection.on('error', () => {
 throw new Error(`unable to connect to database: ${config.mongoUri}`) 
 })
-//Product routes
-app.use('/api', router);
+
 
 app.get("/", (req, res) => {
 res.json({ message: "Welcome to the Dress Store Application." });

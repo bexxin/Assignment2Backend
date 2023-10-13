@@ -14,7 +14,7 @@ router.route('/api/products/:id')
 .put(productController.updateProductById)
 .delete(productController.removeProductById)
 
-router.route('/api/products')
+router.route('/api/products/find')
 .get(productController.findProduct)
 
 export default router;

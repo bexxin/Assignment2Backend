@@ -1,10 +1,10 @@
-import Product from "../models/product.model";
-import extend from 'lodash/extend.js';
+import Product from "../models/product.model.js";
+//import extend from 'lodash/extend.js';
 import errorHandler from './error.controller.js';
-import { updateWith } from "lodash";
+//import { updateWith } from "lodash";
 
 const getAllProducts = async(req,res)=>{
-
+    console.log("allproductscalled");
     try{
         let products = await Product.find();
         return res.status(200).json(products);
@@ -44,8 +44,12 @@ const updateProductById = async(req,res)=>{
         const productId=req.params.id;
         const updatedData=req.body;
     
-        await Product.findOneAndUpdate(productId,updatedData,{new :true});
-        return res.status(200).json({message:"Product Updated Successfully"});
+        const updatedProduct = await Product.findByIdAndUpdate(productId,updatedData,{new :true});
+        
+    
+    if(!updatedProduct){
+        return res.status(400).json({error:"Product Not Found"})}
+    return res.status(200).json({message:"Product Updated Successfully"});
     }
     catch(err){
         return res.status(400).json({error:errorHandler.getErrorMessage(err)});

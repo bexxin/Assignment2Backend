@@ -12,20 +12,25 @@ const getAllProducts = async(req,res)=>{
         return res.status(500).json({error:"Could not retrieve products."})
     }
 }
-const getProductById = async(req,res,next,id)=>{
+
+
+const getProductById = async(req,res)=>{
     console.log("getProductById is called");
     try{
-        let product = await Product.findById(id);
+        const productId = req.params.id;
+
+        let product = await Product.findById(productId);
         if(!product){
             return res.status(400).json({error:"Product Not Found"})
         }
-        req.profile = product
-        next()
+        return res.status(200).json(product);
+        
     }
     catch(err){
         return res.status(400).json({error:"Could not retrieve product."})
     }
 }
+
 const addProduct = async(req,res)=>{
     const product = new Product(req.body)
     try{

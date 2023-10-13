@@ -9,7 +9,7 @@ router.route('/api/products')
 .delete(productController.removeAllProducts)
 
 
-router.route('/api/products/:id')
+router.route('/api/products/id/:id')
 .get(productController.getProductById)
 .put(productController.updateProductById)
 .delete(productController.removeProductById)
